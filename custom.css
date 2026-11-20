@@ -25,7 +25,7 @@
 .reveal h5,
 .reveal h6 {
   color: var(--quanta-azul);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .reveal a {
