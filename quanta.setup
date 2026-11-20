@@ -1,23 +1,28 @@
-# Tema Quanta UFSCar para ox-reveal (reveal.js 4).
+# Tema Quanta UFSCar para org-re-reveal (reveal.js 6).
 # Uso: adicione este repositório como submódulo em `quanta/` e, no .org:
 #   #+SETUPFILE: quanta/quanta.setup
 # Os caminhos abaixo (quanta/...) são relativos ao HTML exportado.
 #+options: H:2 ':t toc:nil timestamp:nil num:nil date:nil
+#+options: reveal_width:1920 reveal_height:1080 reveal_slide_number:c/t
 
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+REVEAL_REVEAL_JS_VERSION: 4
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@6
+#+REVEAL_VERSION: 6
 #+REVEAL_THEME: white
 #+REVEAL_EXTRA_CSS: quanta/custom.css
-#+REVEAL_INIT_OPTIONS: width:1920, height:1080, margin:0.02, minScale:0.5, maxScale:35, slideNumber:"c/t"
+#+REVEAL_MARGIN: 0.02
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 35
 
 #+REVEAL_TITLE_SLIDE: <img class="logo" src="quanta/img/logo.svg" alt="Quanta UFSCar" />
 #+REVEAL_TITLE_SLIDE: <h2 class="title">%t</h2>
 #+REVEAL_TITLE_SLIDE: <h3 class="author">%a</h3>
 #+REVEAL_TITLE_SLIDE: <h3 class="email">%e</h3>
 
+# Plotly no <head>: os gráficos embutidos nos slides chamam Plotly.newPlot
+# durante o carregamento da página.
 #+HTML_HEAD: <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
-#+REVEAL_EXTRA_SCRIPT: Reveal.on('ready', function() {if (window.MathJax) MathJax.typesetPromise();}); Reveal.on('slidechanged', function() {if (window.MathJax) MathJax.typesetPromise();});
-#+REVEAL_EXTRA_SCRIPT_SRC: quanta/bars.js
+# Depois de Reveal.initialize: barras laterais e MathJax a cada troca de slide.
+#+REVEAL_POSTSCRIPT: <script src="quanta/bars.js"></script><script>Reveal.on('ready', function() {if (window.MathJax) MathJax.typesetPromise();}); Reveal.on('slidechanged', function() {if (window.MathJax) MathJax.typesetPromise();});</script>
 #+REVEAL_MATHJAX_URL: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # Cores de destaque (definidas em custom.css)

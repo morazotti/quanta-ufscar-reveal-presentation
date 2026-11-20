@@ -146,3 +146,13 @@
   z-index: 1;
   pointer-events: none;
 }
+
+/* Fundo escuro: o reveal.js marca o slide com .has-dark-background
+   (luminância < 128) e as logos passam para as versões brancas */
+.reveal #sec-title-slide.has-dark-background img.logo {
+  content: url("img/logo-white.svg");
+}
+
+.reveal-viewport:has(.reveal.has-dark-background)::after {
+  background-image: url("img/logo-white-redux.svg");
+}
