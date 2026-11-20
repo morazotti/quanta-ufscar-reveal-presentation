@@ -1,0 +1,138 @@
+/* Tema Quanta sobre o tema "white" do reveal.js */
+:root {
+  --quanta-azul: #242F62;
+  --quanta-laranja: #E53B11;
+}
+
+.reveal-viewport {
+  background: #ffffff;
+}
+
+.reveal {
+  color: #222222;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  color: var(--quanta-azul);
+  text-transform: none;
+}
+
+.reveal a {
+  color: var(--quanta-laranja);
+}
+
+.reveal a:hover {
+  color: var(--quanta-azul);
+}
+
+.reveal strong,
+.reveal b {
+  color: var(--quanta-azul);
+}
+
+.reveal ul li::marker,
+.reveal ol li::marker {
+  color: var(--quanta-laranja);
+}
+
+.reveal .azul {
+  color: var(--quanta-azul);
+  font-weight: bold;
+}
+
+.reveal .laranja {
+  color: var(--quanta-laranja);
+  font-weight: bold;
+}
+
+.reveal .progress {
+  color: var(--quanta-laranja);
+}
+
+.reveal .slide-number {
+  color: var(--quanta-azul);
+  background: transparent;
+}
+
+.reveal table th {
+  background: var(--quanta-azul);
+  color: #ffffff;
+}
+
+/* Slide de título */
+.reveal #sec-title-slide img.logo {
+  display: block;
+  margin: 0 auto 1.5em;
+  width: 55%;
+  max-width: 900px;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal #sec-title-slide h2.title {
+  color: var(--quanta-azul);
+}
+
+.reveal #sec-title-slide h3.author {
+  color: var(--quanta-laranja);
+  font-size: 1.1em;
+}
+
+.reveal #sec-title-slide h3.email {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.reveal .controls {
+  color: var(--quanta-azul);
+}
+
+/* Barras laterais (ver bars.js) */
+.quanta-barras {
+  --largura: 0.9vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Cada barra fica na sua posição (--i) e, desativada, é deslocada para fora da tela */
+.quanta-barra {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--i) * var(--largura));
+  width: var(--largura);
+  transform: translateX(calc(-1 * (var(--i) + 1) * var(--largura) - 4px));
+  transition: transform 0.4s ease;
+}
+
+.quanta-barra.ativa {
+  transform: none;
+}
+
+.quanta-barra:nth-child(odd)  { background: var(--quanta-azul); }
+.quanta-barra:nth-child(even) { background: var(--quanta-laranja); }
+
+/* Logo reduzida no canto superior direito de todos os slides, exceto o de título */
+.reveal-viewport.slide-titulo::after {
+  display: none;
+}
+
+.reveal-viewport::after {
+  content: "";
+  position: fixed;
+  top: 1.5vw;
+  right: 1.5vw;
+  width: 6vw;
+  height: 4.43vw; /* proporção do logo-redux.svg (231.29 x 170.62) */
+  background: url("img/logo-redux.svg") no-repeat center / contain;
+  z-index: 1;
+  pointer-events: none;
+}

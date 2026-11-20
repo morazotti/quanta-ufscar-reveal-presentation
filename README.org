@@ -1,0 +1,48 @@
+#+title: Tema Quanta UFSCar para ox-reveal
+
+Tema reveal.js 4 (via =ox-reveal=) com as cores Quanta (azul =#242F62=,
+laranja =#E53B11=), logo no slide de título, logo reduzida nos demais slides e
+barras laterais que crescem a cada seção horizontal (até 4).
+
+* Conteúdo
+- =quanta.setup= :: opções de export, slide de título, scripts e macros
+  (={{{azul(...)}}}=, ={{{laranja(...)}}}=, ={{{plotly(id, arquivo.json)}}}=).
+- =custom.css= :: cores, slide de título, barras e logo reduzida.
+- =bars.js= :: lógica das barras laterais.
+- =img/= :: =logo.svg= (título), =logo-redux.svg= (canto superior direito),
+  =logo.eps= (original).
+
+* Uso
+O diretório do submódulo *precisa* se chamar =quanta/=: os caminhos em
+=quanta.setup= são relativos ao HTML exportado.
+
+#+begin_src sh
+cd minha-apresentacao
+git init                     # se ainda não for um repositório
+git submodule add git@github.com:morazotti/quanta-ufscar-reveal-presentation.git quanta
+#+end_src
+
+No =.org=:
+#+begin_src org
+,#+title: Título
+,#+author: Nícolas Morazotti
+,#+email: nicolas.morazotti@gmail.com
+,#+language: pt-br
+,#+SETUPFILE: quanta/quanta.setup
+#+end_src
+
+Opções escritas no próprio =.org= depois do =#+SETUPFILE= complementam ou
+sobrescrevem as do tema.
+
+* Atualizar o tema numa apresentação
+#+begin_src sh
+git submodule update --remote quanta
+git commit -am "Atualiza tema Quanta"
+#+end_src
+
+Ao clonar uma apresentação: =git clone --recurse-submodules ...= (ou
+=git submodule update --init= depois do clone).
+
+* Publicar
+O HTML exportado referencia =quanta/custom.css=, =quanta/bars.js= e
+=quanta/img/=: copie a pasta =quanta/= junto com o HTML.

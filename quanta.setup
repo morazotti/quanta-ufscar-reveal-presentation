@@ -1,0 +1,26 @@
+# Tema Quanta UFSCar para ox-reveal (reveal.js 4).
+# Uso: adicione este repositório como submódulo em `quanta/` e, no .org:
+#   #+SETUPFILE: quanta/quanta.setup
+# Os caminhos abaixo (quanta/...) são relativos ao HTML exportado.
+#+options: H:2 ':t toc:nil timestamp:nil num:nil date:nil
+
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_REVEAL_JS_VERSION: 4
+#+REVEAL_THEME: white
+#+REVEAL_EXTRA_CSS: quanta/custom.css
+#+REVEAL_INIT_OPTIONS: width:1920, height:1080, margin:0.02, minScale:0.5, maxScale:35, slideNumber:"c/t"
+
+#+REVEAL_TITLE_SLIDE: <img class="logo" src="quanta/img/logo.svg" alt="Quanta UFSCar" />
+#+REVEAL_TITLE_SLIDE: <h2 class="title">%t</h2>
+#+REVEAL_TITLE_SLIDE: <h3 class="author">%a</h3>
+#+REVEAL_TITLE_SLIDE: <h3 class="email">%e</h3>
+
+#+HTML_HEAD: <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
+#+REVEAL_EXTRA_SCRIPT: Reveal.on('ready', function() {if (window.MathJax) MathJax.typesetPromise();}); Reveal.on('slidechanged', function() {if (window.MathJax) MathJax.typesetPromise();});
+#+REVEAL_EXTRA_SCRIPT_SRC: quanta/bars.js
+#+REVEAL_MATHJAX_URL: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Cores de destaque (definidas em custom.css)
+#+MACRO: azul @@html:<span class="azul">$1</span>@@
+#+MACRO: laranja @@html:<span class="laranja">$1</span>@@
+#+MACRO: plotly @@html:<div id="$1"></div><script> fetch("$2") .then(r => r.json()) .then(fig => {Plotly.newPlot("$1", fig.data, fig.layout, {frames: fig.frames || []}); if (window.MathJax) MathJax.typesetPromise();}); </script>@@
