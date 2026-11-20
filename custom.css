@@ -1,10 +1,16 @@
 /* Tema Quanta sobre o tema "white" do reveal.js */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap");
+
 :root {
   --quanta-azul: #242F62;
   --quanta-laranja: #E53B11;
+  --quanta-fonte: "Noto Sans", Helvetica, Arial, sans-serif;
 }
 
+/* Variáveis de fonte do reveal.js (sobrescrevem Source Sans Pro do tema white) */
 .reveal-viewport {
+  --r-main-font: var(--quanta-fonte);
+  --r-heading-font: var(--quanta-fonte);
   background: #ffffff;
 }
 
@@ -15,9 +21,11 @@
 .reveal h1,
 .reveal h2,
 .reveal h3,
-.reveal h4 {
+.reveal h4,
+.reveal h5,
+.reveal h6 {
   color: var(--quanta-azul);
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .reveal a {
@@ -82,9 +90,11 @@
   font-size: 1.1em;
 }
 
+/* E-mail fica em minúsculas, apesar de ser um heading */
 .reveal #sec-title-slide h3.email {
   font-size: 0.8em;
   font-weight: normal;
+  text-transform: none;
 }
 
 .reveal .controls {
