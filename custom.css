@@ -92,6 +92,7 @@
 
 /* E-mail fica em minúsculas, apesar de ser um heading */
 .reveal #sec-title-slide h3.email {
+  font-family: 'Fira Code', Menlo, Consolas, 'Courier New', monospace;
   font-size: 0.8em;
   font-weight: normal;
   text-transform: none;
