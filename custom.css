@@ -157,3 +157,99 @@
 .reveal-viewport:has(.reveal.has-dark-background)::after {
   background-image: url("img/logo-white-redux.svg");
 }
+
+/* Estilos de slide do template PPTX, ativados por slide com
+     :PROPERTIES:
+     :REVEAL_EXTRA_ATTR: class="quanta-triangulo"   (ou "quanta-metade")
+     :END:
+   O reveal.js copia as classes do <section> para o fundo do slide
+   (.slide-background), onde a forma azul é desenhada: ela acompanha a
+   transição de fundo e aparece também na visão geral (ESC) e no PDF.
+   Logo, número do slide e controles mudam pelo slide presente (:has). */
+.reveal .slide-background.quanta-triangulo::after,
+.reveal .slide-background.quanta-metade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--quanta-azul);
+  pointer-events: none;
+}
+
+/* Triângulo inferior direito: base de 38,5% da largura até a borda direita,
+   subindo até 72,7% da altura (medidas do PPTX) */
+.reveal .slide-background.quanta-triangulo::after {
+  clip-path: polygon(38.5% 100%, 100% 72.7%, 100% 100%);
+}
+
+/* Metade direita azul */
+.reveal .slide-background.quanta-metade::after {
+  left: 50%;
+}
+
+/* Número do slide e controles ficam sobre o azul no canto inferior direito */
+.reveal:not(.overview):has(.slides section.present:is(.quanta-triangulo, .quanta-metade)) :is(.slide-number, .controls) {
+  color: #ffffff;
+}
+
+/* Logo reduzida sobre o azul: versão branca */
+.reveal-viewport:has(.reveal:not(.overview) .slides section.present.quanta-metade)::after {
+  background-image: url("img/logo-white-redux.svg");
+}
+
+/* Slide metade: título centralizado na metade esquerda, demais elementos
+   na metade direita, em branco. O column-gap de 8% põe a coluna direita em
+   54% da largura, como no PPTX.
+   Texto também à esquerda: bloco #+begin_esquerda (vira div.esquerda), que
+   fica abaixo do título. Nesse caso o lado direito deve ser um único
+   elemento (#+begin_direita, ou uma só lista/parágrafo), que ocupa a altura
+   das duas linhas da coluna esquerda.
+   O reveal.js põe display inline nos slides (block carregado, none
+   descarregado); o !important só vale para os carregados. */
+.reveal .slides section.quanta-metade:not([style*="display: none"]) {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8%;
+  align-items: center;
+}
+
+.reveal .slides section.quanta-metade > h2 {
+  grid-column: 1;
+  grid-row: 1 / span 20; /* ocupa todas as linhas da coluna direita */
+  text-align: center;
+}
+
+.reveal .slides section.quanta-metade > :not(h2, .esquerda) {
+  grid-column: 2;
+  justify-self: start;
+  text-align: left;
+  color: #ffffff;
+}
+
+.reveal .slides section.quanta-metade > :not(h2, .esquerda) :is(h1, h2, h3, h4, h5, h6, strong, b, .azul, a:hover) {
+  color: #ffffff;
+}
+
+.reveal .slides section.quanta-metade:has(> .esquerda) {
+  grid-template-rows: auto auto;
+  row-gap: 0.5em;
+}
+
+.reveal .slides section.quanta-metade:has(> .esquerda) > h2 {
+  grid-row: 1;
+  align-self: end;
+  margin-bottom: 0;
+}
+
+.reveal .slides section.quanta-metade > .esquerda {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+}
+
+.reveal .slides section.quanta-metade:has(> .esquerda) > :not(h2, .esquerda) {
+  grid-row: 1 / -1;
+}
+
+.reveal .slides section.quanta-metade table th {
+  background: var(--quanta-laranja);
+}

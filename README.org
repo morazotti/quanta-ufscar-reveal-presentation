@@ -7,7 +7,8 @@ barras laterais que crescem a cada seção horizontal (até 4).
 * Conteúdo
 - =quanta.setup= :: opções de export, slide de título, scripts e macros
   (={{{azul(...)}}}=, ={{{laranja(...)}}}=, ={{{plotly(id, arquivo.json)}}}=).
-- =custom.css= :: cores, slide de título, barras e logo reduzida.
+- =custom.css= :: cores, slide de título, barras, logo reduzida e estilos de
+  slide (=quanta-triangulo=, =quanta-metade=).
 - =bars.js= :: lógica das barras laterais.
 - =img/= :: =logo.svg= (título), =logo-redux.svg= (canto superior direito),
   =logo.eps= (original).
@@ -33,6 +34,26 @@ No =.org=:
 
 Opções escritas no próprio =.org= depois do =#+SETUPFILE= complementam ou
 sobrescrevem as do tema.
+
+** Estilos de slide
+Dois estilos do template PPTX, escolhidos por slide com uma classe no
+=<section>=:
+- =quanta-triangulo= :: triângulo azul no canto inferior direito.
+- =quanta-metade= :: metade direita azul; título centralizado à esquerda e o
+  restante do conteúdo em branco à direita.
+
+A logo reduzida fica branca sobre o azul (=quanta-metade=); número do slide e
+controles ficam brancos nos dois estilos.
+
+#+begin_src org
+,* Resultados
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="quanta-metade"
+:END:
+- texto na metade azul
+#+end_src
+
+No slide de título: =#+REVEAL_TITLE_SLIDE_EXTRA_ATTR: class="quanta-triangulo"=.
 
 * Atualizar o tema numa apresentação
 #+begin_src sh
