@@ -218,6 +218,12 @@
   text-align: center;
 }
 
+/* Afasta a coluna esquerda da borda (e das barras laterais) */
+.reveal .slides section.quanta-metade > :is(h2, .esquerda) {
+  padding-inline: 6%;
+  box-sizing: border-box;
+}
+
 .reveal .slides section.quanta-metade > :not(h2, .esquerda) {
   grid-column: 2;
   justify-self: start;

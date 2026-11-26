@@ -53,6 +53,28 @@ controles ficam brancos nos dois estilos.
 - texto na metade azul
 #+end_src
 
+Para pôr texto também na metade esquerda (abaixo do título), use um bloco
+=esquerda=. Nesse caso o lado direito precisa ser um único elemento: agrupe-o
+num bloco =direita= (ou use uma só lista/parágrafo).
+
+#+begin_src org
+,* Resultados
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: class="quanta-metade"
+:END:
+,#+begin_esquerda
+Texto abaixo do título.
+,#+end_esquerda
+
+,#+begin_direita
+Texto na metade azul.
+- item
+,#+end_direita
+#+end_src
+
+Para um único elemento, =#+attr_html: :class esquerda= antes dele também
+serve.
+
 No slide de título: =#+REVEAL_TITLE_SLIDE_EXTRA_ATTR: class="quanta-triangulo"=.
 
 * Atualizar o tema numa apresentação
