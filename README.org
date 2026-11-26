@@ -2,14 +2,13 @@
 
 Tema reveal.js 4 (via =ox-reveal=) com as cores Quanta (azul =#242F62=,
 laranja =#E53B11=), logo no slide de título, logo reduzida nos demais slides e
-barras laterais que crescem a cada seção horizontal (até 4).
+estilos de slide do template PPTX (triângulo e metade azul).
 
 * Conteúdo
 - =quanta.setup= :: opções de export, slide de título, scripts e macros
   (={{{azul(...)}}}=, ={{{laranja(...)}}}=, ={{{plotly(id, arquivo.json)}}}=).
-- =custom.css= :: cores, slide de título, barras, logo reduzida e estilos de
-  slide (=quanta-triangulo=, =quanta-metade=).
-- =bars.js= :: lógica das barras laterais.
+- =custom.css= :: cores, slide de título, logo reduzida e estilos de slide
+  (=quanta-triangulo=, =quanta-metade=).
 - =img/= :: =logo.svg= (título), =logo-redux.svg= (canto superior direito),
   =logo.eps= (original).
 
@@ -87,5 +86,5 @@ Ao clonar uma apresentação: =git clone --recurse-submodules ...= (ou
 =git submodule update --init= depois do clone).
 
 * Publicar
-O HTML exportado referencia =quanta/custom.css=, =quanta/bars.js= e
-=quanta/img/=: copie a pasta =quanta/= junto com o HTML.
+O HTML exportado referencia =quanta/custom.css= e =quanta/img/=: copie a pasta
+=quanta/= junto com o HTML.

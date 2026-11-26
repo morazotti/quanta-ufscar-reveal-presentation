@@ -102,37 +102,8 @@
   color: var(--quanta-azul);
 }
 
-/* Barras laterais (ver bars.js) */
-.quanta-barras {
-  --largura: 0.9vw;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Cada barra fica na sua posição (--i) e, desativada, é deslocada para fora da tela */
-.quanta-barra {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(var(--i) * var(--largura));
-  width: var(--largura);
-  transform: translateX(calc(-1 * (var(--i) + 1) * var(--largura) - 4px));
-  transition: transform 0.4s ease;
-}
-
-.quanta-barra.ativa {
-  transform: none;
-}
-
-.quanta-barra:nth-child(odd)  { background: var(--quanta-azul); }
-.quanta-barra:nth-child(even) { background: var(--quanta-laranja); }
-
 /* Logo reduzida no canto superior direito de todos os slides, exceto o de título */
-.reveal-viewport.slide-titulo::after {
+.reveal-viewport:has(#sec-title-slide.present)::after {
   display: none;
 }
 
@@ -218,7 +189,7 @@
   text-align: center;
 }
 
-/* Afasta a coluna esquerda da borda (e das barras laterais) */
+/* Afasta a coluna esquerda da borda */
 .reveal .slides section.quanta-metade > :is(h2, .esquerda) {
   padding-inline: 6%;
   box-sizing: border-box;
