@@ -10,6 +10,7 @@ estilos de slide do template PPTX (triângulo e metade azul).
 - =custom.css= :: cores, slide de título, logo reduzida e estilos de slide
   (=quanta-triangulo=, =quanta-metade=).
 - =img/= :: =logo.svg= (título), =logo-redux.svg= (canto superior direito),
+  =favicon.svg= (=logo-redux.svg= que fica branca em tema escuro),
   =logo.eps= (original).
 
 * Uso
