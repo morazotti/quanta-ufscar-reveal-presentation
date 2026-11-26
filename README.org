@@ -85,6 +85,14 @@ Classe padrão para todos os slides (vale para os headings sem =class= no
 Esse keyword não é do org-re-reveal: quem o aplica na exportação é o
 =org-reveal-transient.el= do dotfiles (=C-c v=, teclas =c= e =C=).
 
+** Passador de slides (apontador)
+PageDown/PageUp já percorrem todos os slides em ordem, inclusive os
+verticais. Se o passador mandar setas ←/→, que pulam os slides verticais,
+use a navegação linear:
+#+begin_src org
+,#+REVEAL_EXTRA_OPTIONS: navigationMode: 'linear'
+#+end_src
+
 * Atualizar o tema numa apresentação
 #+begin_src sh
 git submodule update --remote quanta
