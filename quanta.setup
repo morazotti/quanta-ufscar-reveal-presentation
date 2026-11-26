@@ -18,6 +18,9 @@
 #+REVEAL_TITLE_SLIDE: <h3 class="author">%a</h3>
 #+REVEAL_TITLE_SLIDE: <h3 class="email">%e</h3>
 
+# Favicon: logo reduzida
+#+HTML_HEAD: <link rel="icon" type="image/svg+xml" href="quanta/img/logo-redux.svg" />
+
 # Plotly no <head>: os gráficos embutidos nos slides chamam Plotly.newPlot
 # durante o carregamento da página.
 #+HTML_HEAD: <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
