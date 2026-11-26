@@ -76,6 +76,14 @@ serve.
 
 No slide de título: =#+REVEAL_TITLE_SLIDE_EXTRA_ATTR: class="quanta-triangulo"=.
 
+Classe padrão para todos os slides (vale para os headings sem =class= no
+=:REVEAL_EXTRA_ATTR:=; =class=""= deixa um slide sem ela):
+#+begin_src org
+,#+REVEAL_DEFAULT_SLIDE_CLASS: quanta-triangulo
+#+end_src
+Esse keyword não é do org-re-reveal: quem o aplica na exportação é o
+=org-reveal-transient.el= do dotfiles (=C-c v=, teclas =c= e =C=).
+
 * Atualizar o tema numa apresentação
 #+begin_src sh
 git submodule update --remote quanta
