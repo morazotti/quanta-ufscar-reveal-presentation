@@ -102,11 +102,8 @@
   color: var(--quanta-azul);
 }
 
-/* Logo reduzida no canto superior direito de todos os slides, exceto o de título */
-.reveal-viewport:has(#sec-title-slide.present)::after {
-  display: none;
-}
-
+/* Logo reduzida no canto superior direito de todos os slides, exceto o de
+   título; entra e sai com fade, no tempo da transição padrão do reveal.js */
 .reveal-viewport::after {
   content: "";
   position: fixed;
@@ -117,6 +114,14 @@
   background: url("img/logo-redux.svg") no-repeat center / contain;
   z-index: 1;
   pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+/* Antes de .ready o slide de título ainda não é .present: sem esta regra a
+   logo apareceria no carregamento e sumiria com fade */
+.reveal-viewport:has(#sec-title-slide.present)::after,
+.reveal-viewport:not(:has(.reveal.ready))::after {
+  opacity: 0;
 }
 
 /* Fundo escuro: o reveal.js marca o slide com .has-dark-background
