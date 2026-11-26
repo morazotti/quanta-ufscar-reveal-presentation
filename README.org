@@ -9,6 +9,8 @@ estilos de slide do template PPTX (triângulo e metade azul).
   (={{{azul(...)}}}=, ={{{laranja(...)}}}=, ={{{plotly(id, arquivo.json)}}}=).
 - =custom.css= :: cores, slide de título, logo reduzida e estilos de slide
   (=quanta-triangulo=, =quanta-metade=).
+- =quanta.js= :: evita que a forma azul pisque entre slides vizinhos com a
+  mesma classe =quanta-*=.
 - =img/= :: =logo.svg= (título), =logo-redux.svg= (canto superior direito),
   =favicon.svg= (=logo-redux.svg= que fica branca em tema escuro),
   =logo.eps= (original).
@@ -103,5 +105,5 @@ Ao clonar uma apresentação: =git clone --recurse-submodules ...= (ou
 =git submodule update --init= depois do clone).
 
 * Publicar
-O HTML exportado referencia =quanta/custom.css= e =quanta/img/=: copie a pasta
-=quanta/= junto com o HTML.
+O HTML exportado referencia =quanta/custom.css=, =quanta/quanta.js= e
+=quanta/img/=: copie a pasta =quanta/= junto com o HTML.

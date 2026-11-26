@@ -24,8 +24,8 @@
 # Plotly no <head>: os gráficos embutidos nos slides chamam Plotly.newPlot
 # durante o carregamento da página.
 #+HTML_HEAD: <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
-# Depois de Reveal.initialize: MathJax a cada troca de slide.
-#+REVEAL_POSTSCRIPT: <script>Reveal.on('ready', function() {if (window.MathJax) MathJax.typesetPromise();}); Reveal.on('slidechanged', function() {if (window.MathJax) MathJax.typesetPromise();});</script>
+# Depois de Reveal.initialize: fundos quanta-* sem piscar e MathJax a cada troca de slide.
+#+REVEAL_POSTSCRIPT: <script src="quanta/quanta.js"></script><script>Reveal.on('ready', function() {if (window.MathJax) MathJax.typesetPromise();}); Reveal.on('slidechanged', function() {if (window.MathJax) MathJax.typesetPromise();});</script>
 #+REVEAL_MATHJAX_URL: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # Cores de destaque (definidas em custom.css)
