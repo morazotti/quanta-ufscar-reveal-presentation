@@ -76,8 +76,9 @@
 .katex [data-cor="laranja-quanta"] { color: var(--quanta-laranja); }
 
 /* Rótulos: \termo{N}{tex} marca o N-ésimo termo de uma fórmula; num bloco
-   #+begin_rotulos com uma lista de fragmentos, o N-ésimo item colore o termo
-   N ao aparecer. A fórmula do próprio item já tem a mesma cor. */
+   #+begin_rotulos, cada item da lista vira fragmento (quanta.js) e o
+   N-ésimo item colore o termo N ao aparecer. A fórmula do próprio item já
+   tem a mesma cor. */
 .reveal .rotulos ul {
   display: flex;
   justify-content: center;

@@ -44,6 +44,16 @@
 #+REVEAL_INIT_SCRIPT:             '\\termo': '\\htmlData{termo=#1}{#2}' } },
 #+REVEAL_INIT_SCRIPT: autoAnimateDuration: 1.2
 
+# As mesmas macros em LaTeX, para o preview de fórmulas no Org (e o export
+# LaTeX): \id e \termo mostram só o conteúdo; \idc colore quando a cor
+# existe no xcolor (as do custom.css estão definidas abaixo).
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \providecommand{\id}[2]{#2}
+#+LATEX_HEADER: \providecommand{\termo}[2]{#2}
+#+LATEX_HEADER: \makeatletter\providecommand{\idc}[3]{\@ifundefinedcolor{#2}{#3}{\textcolor{#2}{#3}}}\makeatother
+#+LATEX_HEADER: \definecolor{azul}{HTML}{58C4DD}\definecolor{amarelo}{HTML}{FFFF00}\definecolor{vermelho}{HTML}{FC6255}\definecolor{verde}{HTML}{83C167}
+#+LATEX_HEADER: \definecolor{azul-quanta}{HTML}{242F62}\definecolor{laranja-quanta}{HTML}{E53B11}
+
 # Cores de destaque (definidas em custom.css)
 #+MACRO: azul @@html:<span class="azul">$1</span>@@
 #+MACRO: laranja @@html:<span class="laranja">$1</span>@@

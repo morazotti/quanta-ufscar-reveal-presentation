@@ -1,3 +1,15 @@
+// Rótulos (#+begin_rotulos, ver custom.css): cada item da lista é um
+// fragmento, sem precisar de #+ATTR_REVEAL. Itens que já são fragmentos
+// (estilo escolhido com :frag) ficam como estão. Antes de o reveal.js
+// iniciar basta pôr a classe; se ele já iniciou, Reveal.sync() reconta os
+// fragmentos (e recria os fundos, por isso vem antes do bloco seguinte).
+(function () {
+  document.querySelectorAll('.reveal .rotulos li:not(.fragment)').forEach(function (li) {
+    li.classList.add('fragment');
+  });
+  if (Reveal.isReady()) Reveal.sync();
+})();
+
 // Fundos com a mesma forma (classes quanta-*, ver custom.css) não piscam
 // entre slides vizinhos. O reveal.js faz fade cruzado entre o fundo antigo e
 // o novo, e no meio do fade os dois triângulos sobrepostos ficam
