@@ -5,7 +5,7 @@ laranja =#E53B11=), logo no slide de título, logo reduzida nos demais slides e
 estilos de slide do template PPTX (triângulo e metade azul).
 
 * Conteúdo
-- =quanta.setup= :: opções de export, slide de título, scripts e macros
+- =quanta.setup= :: opções de export, slide de título, KaTeX, scripts e macros
   (={{{azul(...)}}}=, ={{{laranja(...)}}}=, ={{{plotly(id, arquivo.json)}}}=).
 - =custom.css= :: cores, slide de título, logo reduzida e estilos de slide
   (=quanta-triangulo=, =quanta-metade=).
@@ -94,6 +94,29 @@ use a navegação linear:
 #+begin_src org
 ,#+REVEAL_EXTRA_OPTIONS: navigationMode: 'linear'
 #+end_src
+
+** Fórmulas animadas (KaTeX)
+A matemática é renderizada pelo KaTeX (=RevealMath.KaTeX=), com duas macros
+para o auto-animate mover pedaços de uma fórmula entre slides:
+- =\id{ID}{tex}= :: marca =tex= com =data-id=ID=.
+- =\idc{ID}{COR}{tex}= :: idem, colorido com =COR=.
+
+Cores: =azul=, =amarelo=, =vermelho=, =verde= (as do 3Blue1Brown),
+=azul-quanta=, =laranja-quanta= (em =custom.css=) e os nomes de
+=my/latex-colors-alist= do dotfiles, que entram na exportação
+(=org-ui-config.el=).
+
+#+begin_src org
+,* Passo 1
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+\[ \idc{x}{azul}{x} + \id{y}{y} = 1 \]
+#+end_src
+
+Mais opções em =#+REVEAL_INIT_SCRIPT= no =.org= precisam começar com vírgula
+(=, controls: false=), porque continuam as do tema. Sem MathJax, rótulos em
+LaTeX dos gráficos Plotly não são renderizados.
 
 * Atualizar o tema numa apresentação
 #+begin_src sh

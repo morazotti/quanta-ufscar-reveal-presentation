@@ -56,6 +56,25 @@
   font-weight: bold;
 }
 
+/* KaTeX (ver quanta.setup): \id e \idc geram elementos com data-id, que o
+   auto-animate pareia entre slides; inline-block deixa movê-los. */
+.reveal .katex-display {
+  font-size: 2em;
+}
+
+.katex [data-id] {
+  display: inline-block;
+}
+
+/* Cores de \idc{id}{COR}{...}: as do 3Blue1Brown e as do Quanta. As de
+   my/latex-colors-alist entram na exportação (org-ui-config.el). */
+.katex [data-cor="azul"]           { color: #58C4DD; }
+.katex [data-cor="amarelo"]        { color: #FFFF00; }
+.katex [data-cor="vermelho"]       { color: #FC6255; }
+.katex [data-cor="verde"]          { color: #83C167; }
+.katex [data-cor="azul-quanta"]    { color: var(--quanta-azul); }
+.katex [data-cor="laranja-quanta"] { color: var(--quanta-laranja); }
+
 .reveal .progress {
   color: var(--quanta-laranja);
 }

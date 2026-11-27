@@ -24,11 +24,24 @@
 # Plotly no <head>: os gráficos embutidos nos slides chamam Plotly.newPlot
 # durante o carregamento da página.
 #+HTML_HEAD: <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
-# Depois de Reveal.initialize: fundos quanta-* sem piscar e MathJax a cada troca de slide.
-#+REVEAL_POSTSCRIPT: <script src="quanta/quanta.js"></script><script>Reveal.on('ready', function() {if (window.MathJax) MathJax.typesetPromise();}); Reveal.on('slidechanged', function() {if (window.MathJax) MathJax.typesetPromise();});</script>
-#+REVEAL_MATHJAX_URL: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+# Depois de Reveal.initialize: fundos quanta-* sem piscar (quanta.js).
+#+REVEAL_POSTSCRIPT: <script src="quanta/quanta.js"></script>
+
+# Matemática com KaTeX. RevealMath sozinho é a variante MathJax 2, que
+# ignora a configuração katex; por isso o plugin entra por REVEAL_ADD_PLUGIN
+# como RevealMath.KaTeX. O nome "math" faz o org-re-reveal não carregar o
+# MathJax.
+#   \id{ID}{tex}       elemento com data-id, pareado pelo auto-animate
+#   \idc{ID}{COR}{tex} idem, com data-cor=COR (cores em custom.css e, na
+#                      exportação, as de my/latex-colors-alist)
+# Outras opções em REVEAL_INIT_SCRIPT no .org precisam começar com vírgula.
+#+REVEAL_PLUGINS: (notes)
+#+REVEAL_ADD_PLUGIN: math RevealMath.KaTeX https://cdn.jsdelivr.net/npm/reveal.js@6/dist/plugin/math.js
+#+REVEAL_INIT_SCRIPT: katex: { trust: true, strict: false,
+#+REVEAL_INIT_SCRIPT:   macros: { '\\id': '\\htmlData{id=#1}{#2}', '\\idc': '\\htmlData{id=#1, cor=#2}{#3}' } },
+#+REVEAL_INIT_SCRIPT: autoAnimateDuration: 1.2
 
 # Cores de destaque (definidas em custom.css)
 #+MACRO: azul @@html:<span class="azul">$1</span>@@
 #+MACRO: laranja @@html:<span class="laranja">$1</span>@@
-#+MACRO: plotly @@html:<div id="$1"></div><script> fetch("$2") .then(r => r.json()) .then(fig => {Plotly.newPlot("$1", fig.data, fig.layout, {frames: fig.frames || []}); if (window.MathJax) MathJax.typesetPromise();}); </script>@@
+#+MACRO: plotly @@html:<div id="$1"></div><script> fetch("$2") .then(r => r.json()) .then(fig => Plotly.newPlot("$1", fig.data, fig.layout, {frames: fig.frames || []})); </script>@@
