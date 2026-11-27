@@ -92,9 +92,9 @@
 }
 
 .reveal section:has(.rotulos li:nth-child(1).visible) .katex [data-termo="1"],
-.reveal .rotulos li:nth-child(1) .katex { color: #58C4DD; }
+.reveal .rotulos li:nth-child(1) .katex { color: var(--quanta-azul); }
 .reveal section:has(.rotulos li:nth-child(2).visible) .katex [data-termo="2"],
-.reveal .rotulos li:nth-child(2) .katex { color: #FFFF00; }
+.reveal .rotulos li:nth-child(2) .katex { color: var(--quanta-laranja); }
 .reveal section:has(.rotulos li:nth-child(3).visible) .katex [data-termo="3"],
 .reveal .rotulos li:nth-child(3) .katex { color: #83C167; }
 
