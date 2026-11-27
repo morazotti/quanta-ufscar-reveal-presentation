@@ -198,26 +198,26 @@
   align-items: center;
 }
 
-.reveal .slides section.quanta-metade > h2 {
+.reveal .slides section.quanta-metade > :is(h1, h2, h3, h4, h5, h6) {
   grid-column: 1;
   grid-row: 1 / span 20; /* ocupa todas as linhas da coluna direita */
   text-align: center;
 }
 
 /* Afasta a coluna esquerda da borda */
-.reveal .slides section.quanta-metade > :is(h2, .esquerda) {
+.reveal .slides section.quanta-metade > :is(h1, h2, h3, h4, h5, h6, .esquerda) {
   padding-inline: 6%;
   box-sizing: border-box;
 }
 
-.reveal .slides section.quanta-metade > :not(h2, .esquerda) {
+.reveal .slides section.quanta-metade > :not(h1, h2, h3, h4, h5, h6, .esquerda) {
   grid-column: 2;
   justify-self: start;
   text-align: left;
   color: #ffffff;
 }
 
-.reveal .slides section.quanta-metade > :not(h2, .esquerda) :is(h1, h2, h3, h4, h5, h6, strong, b, .azul, a:hover) {
+.reveal .slides section.quanta-metade > :not(h1, h2, h3, h4, h5, h6, .esquerda) :is(h1, h2, h3, h4, h5, h6, strong, b, .azul, a:hover) {
   color: #ffffff;
 }
 
@@ -226,7 +226,7 @@
   row-gap: 0.5em;
 }
 
-.reveal .slides section.quanta-metade:has(> .esquerda) > h2 {
+.reveal .slides section.quanta-metade:has(> .esquerda) > :is(h1, h2, h3, h4, h5, h6) {
   grid-row: 1;
   align-self: end;
   margin-bottom: 0;
@@ -238,7 +238,7 @@
   align-self: start;
 }
 
-.reveal .slides section.quanta-metade:has(> .esquerda) > :not(h2, .esquerda) {
+.reveal .slides section.quanta-metade:has(> .esquerda) > :not(h1, h2, h3, h4, h5, h6, .esquerda) {
   grid-row: 1 / -1;
 }
 
