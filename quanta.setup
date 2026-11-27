@@ -34,11 +34,14 @@
 #   \id{ID}{tex}       elemento com data-id, pareado pelo auto-animate
 #   \idc{ID}{COR}{tex} idem, com data-cor=COR (cores em custom.css e, na
 #                      exportação, as de my/latex-colors-alist)
+#   \termo{N}{tex}     N-ésimo termo, colorido quando o N-ésimo item de um
+#                      bloco #+begin_rotulos aparece (custom.css)
 # Outras opções em REVEAL_INIT_SCRIPT no .org precisam começar com vírgula.
 #+REVEAL_PLUGINS: (notes)
 #+REVEAL_ADD_PLUGIN: math RevealMath.KaTeX https://cdn.jsdelivr.net/npm/reveal.js@6/dist/plugin/math.js
 #+REVEAL_INIT_SCRIPT: katex: { trust: true, strict: false,
-#+REVEAL_INIT_SCRIPT:   macros: { '\\id': '\\htmlData{id=#1}{#2}', '\\idc': '\\htmlData{id=#1, cor=#2}{#3}' } },
+#+REVEAL_INIT_SCRIPT:   macros: { '\\id': '\\htmlData{id=#1}{#2}', '\\idc': '\\htmlData{id=#1, cor=#2}{#3}',
+#+REVEAL_INIT_SCRIPT:             '\\termo': '\\htmlData{termo=#1}{#2}' } },
 #+REVEAL_INIT_SCRIPT: autoAnimateDuration: 1.2
 
 # Cores de destaque (definidas em custom.css)

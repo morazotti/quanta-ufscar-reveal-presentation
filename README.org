@@ -101,6 +101,11 @@ para o auto-animate mover pedaços de uma fórmula entre slides:
 - =\id{ID}{tex}= :: marca =tex= com =data-id=ID=.
 - =\idc{ID}{COR}{tex}= :: idem, colorido com =COR=.
 
+Os pedaços marcados só se movem, sem mudar de escala (=quanta.js=), como no
+=TransformMatchingTex= do manim. Marque só o que se repete entre os passos e
+deixe o resto de fora, que entra com fade: =\id{k}{K}^{-1}= em vez de
+=\id{k}{K^{-1}}=.
+
 Cores: =azul=, =amarelo=, =vermelho=, =verde= (as do 3Blue1Brown),
 =azul-quanta=, =laranja-quanta= (em =custom.css=) e os nomes de
 =my/latex-colors-alist= do dotfiles, que entram na exportação
@@ -112,6 +117,22 @@ Cores: =azul=, =amarelo=, =vermelho=, =verde= (as do 3Blue1Brown),
 :REVEAL_EXTRA_ATTR: data-auto-animate
 :END:
 \[ \idc{x}{azul}{x} + \id{y}{y} = 1 \]
+#+end_src
+
+Para colorir termos à medida que são explicados, marque-os com
+=\termo{N}{tex}= e ponha os rótulos numa lista de fragmentos dentro de um
+bloco =rotulos=: quando o N-ésimo item aparece, o termo N ganha a cor dele
+(1 azul, 2 amarelo, 3 verde).
+
+#+begin_src org
+\[ \termo{1}{E} = \termo{2}{m} \termo{3}{c^2} \]
+
+,#+begin_rotulos
+,#+ATTR_REVEAL: :frag (appear)
+- \(E\): energia
+- \(m\): massa
+- \(c\): velocidade da luz
+,#+end_rotulos
 #+end_src
 
 Mais opções em =#+REVEAL_INIT_SCRIPT= no =.org= precisam começar com vírgula
