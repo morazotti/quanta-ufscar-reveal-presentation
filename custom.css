@@ -56,48 +56,15 @@
   font-weight: bold;
 }
 
-/* KaTeX (ver quanta.setup): \id e \idc geram elementos com data-id, que o
-   auto-animate pareia entre slides; inline-block deixa movê-los. */
-.reveal .katex-display {
-  font-size: 2em;
-}
-
-.katex [data-id] {
-  display: inline-block;
-}
-
-/* Cores de \idc{id}{COR}{...}: as do 3Blue1Brown e as do Quanta. As de
-   my/latex-colors-alist entram na exportação (org-ui-config.el). */
-.katex [data-cor="azul"]           { color: #58C4DD; }
-.katex [data-cor="amarelo"]        { color: #FFFF00; }
-.katex [data-cor="vermelho"]       { color: #FC6255; }
-.katex [data-cor="verde"]          { color: #83C167; }
+/* Cores do tema para o módulo anima (fórmulas animadas e rótulos): \idc
+   com azul-quanta/laranja-quanta e os termos dos rótulos. */
 .katex [data-cor="azul-quanta"]    { color: var(--quanta-azul); }
 .katex [data-cor="laranja-quanta"] { color: var(--quanta-laranja); }
 
-/* Rótulos: \termo{N}{tex} marca o N-ésimo termo de uma fórmula; num bloco
-   #+begin_rotulos, cada item da lista vira fragmento (quanta.js) e o
-   N-ésimo item colore o termo N ao aparecer. A fórmula do próprio item já
-   tem a mesma cor. */
-.reveal .rotulos ul {
-  display: flex;
-  justify-content: center;
-  gap: 2.5em;
-  list-style: none;
-  margin: 0.8em 0 0;
-  padding: 0;
+.reveal {
+  --anima-termo-1: var(--quanta-azul);
+  --anima-termo-2: var(--quanta-laranja);
 }
-
-.katex [data-termo] {
-  transition: color 0.6s ease;
-}
-
-.reveal section:has(.rotulos li:nth-child(1).visible) .katex [data-termo="1"],
-.reveal .rotulos li:nth-child(1) .katex { color: var(--quanta-azul); }
-.reveal section:has(.rotulos li:nth-child(2).visible) .katex [data-termo="2"],
-.reveal .rotulos li:nth-child(2) .katex { color: var(--quanta-laranja); }
-.reveal section:has(.rotulos li:nth-child(3).visible) .katex [data-termo="3"],
-.reveal .rotulos li:nth-child(3) .katex { color: #83C167; }
 
 .reveal .progress {
   color: var(--quanta-laranja);

@@ -5,7 +5,7 @@ laranja =#E53B11=), logo no slide de título, logo reduzida nos demais slides e
 estilos de slide do template PPTX (triângulo e metade azul).
 
 * Conteúdo
-- =quanta.setup= :: opções de export, slide de título, KaTeX, scripts e macros
+- =quanta.setup= :: opções de export, slide de título, scripts e macros
   (={{{azul(...)}}}=, ={{{laranja(...)}}}=, ={{{plotly(id, arquivo.json)}}}=).
 - =custom.css= :: cores, slide de título, logo reduzida e estilos de slide
   (=quanta-triangulo=, =quanta-metade=).
@@ -36,6 +36,12 @@ No =.org=:
 
 Opções escritas no próprio =.org= depois do =#+SETUPFILE= complementam ou
 sobrescrevem as do tema.
+
+Fórmulas animadas e rótulos ficam no módulo separado =anima=
+(=reveal-anima=), que serve a qualquer tema: =#+SETUPFILE: anima/anima.setup=
+depois do tema. Para ele, o tema define as cores =azul-quanta= e
+=laranja-quanta= de =\idc= (CSS e =#+LATEX_HEADER=) e as dos termos 1 e 2
+dos rótulos.
 
 ** Estilos de slide
 Dois estilos do template PPTX, escolhidos por slide com uma classe no
@@ -94,55 +100,6 @@ use a navegação linear:
 #+begin_src org
 ,#+REVEAL_EXTRA_OPTIONS: navigationMode: 'linear'
 #+end_src
-
-** Fórmulas animadas (KaTeX)
-A matemática é renderizada pelo KaTeX (=RevealMath.KaTeX=), com duas macros
-para o auto-animate mover pedaços de uma fórmula entre slides:
-- =\id{ID}{tex}= :: marca =tex= com =data-id=ID=.
-- =\idc{ID}{COR}{tex}= :: idem, colorido com =COR=.
-
-O =quanta.setup= também define as macros em LaTeX (=#+LATEX_HEADER=), para
-o preview de fórmulas do Org e o export LaTeX: =\id= e =\termo= mostram só o
-conteúdo e =\idc= colore quando a cor existe no xcolor.
-
-Os pedaços marcados só se movem, sem mudar de escala (=quanta.js=), como no
-=TransformMatchingTex= do manim. Marque só o que se repete entre os passos e
-deixe o resto de fora, que entra com fade: =\id{k}{K}^{-1}= em vez de
-=\id{k}{K^{-1}}=.
-
-Cores: =azul=, =amarelo=, =vermelho=, =verde= (as do 3Blue1Brown),
-=azul-quanta=, =laranja-quanta= (em =custom.css=) e os nomes de
-=my/latex-colors-alist= do dotfiles, que entram na exportação
-(=org-ui-config.el=).
-
-#+begin_src org
-,* Passo 1
-:PROPERTIES:
-:REVEAL_EXTRA_ATTR: data-auto-animate
-:END:
-\[ \idc{x}{azul}{x} + \id{y}{y} = 1 \]
-#+end_src
-
-Para colorir termos à medida que são explicados, marque-os com
-=\termo{N}{tex}= e ponha os rótulos numa lista dentro de um bloco =rotulos=.
-Cada item aparece num passo (=quanta.js= os torna fragmentos; um
-=#+ATTR_REVEAL: :frag (...)= escolhe outro efeito) e, quando o N-ésimo item
-aparece, o termo N ganha a cor dele (1 azul Quanta, 2 laranja Quanta,
-3 verde).
-
-#+begin_src org
-\[ \termo{1}{E} = \termo{2}{m} \termo{3}{c^2} \]
-
-,#+begin_rotulos
-- \(E\): energia
-- \(m\): massa
-- \(c\): velocidade da luz
-,#+end_rotulos
-#+end_src
-
-Mais opções em =#+REVEAL_INIT_SCRIPT= no =.org= precisam começar com vírgula
-(=, controls: false=), porque continuam as do tema. Sem MathJax, rótulos em
-LaTeX dos gráficos Plotly não são renderizados.
 
 * Atualizar o tema numa apresentação
 #+begin_src sh

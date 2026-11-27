@@ -26,32 +26,12 @@
 #+HTML_HEAD: <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
 # Depois de Reveal.initialize: fundos quanta-* sem piscar (quanta.js).
 #+REVEAL_POSTSCRIPT: <script src="quanta/quanta.js"></script>
+# MathJax 3 quando não há o módulo anima (com ele, o KaTeX substitui o MathJax).
+#+REVEAL_MATHJAX_URL: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-# Matemática com KaTeX. RevealMath sozinho é a variante MathJax 2, que
-# ignora a configuração katex; por isso o plugin entra por REVEAL_ADD_PLUGIN
-# como RevealMath.KaTeX. O nome "math" faz o org-re-reveal não carregar o
-# MathJax.
-#   \id{ID}{tex}       elemento com data-id, pareado pelo auto-animate
-#   \idc{ID}{COR}{tex} idem, com data-cor=COR (cores em custom.css e, na
-#                      exportação, as de my/latex-colors-alist)
-#   \termo{N}{tex}     N-ésimo termo, colorido quando o N-ésimo item de um
-#                      bloco #+begin_rotulos aparece (custom.css)
-# Outras opções em REVEAL_INIT_SCRIPT no .org precisam começar com vírgula.
-#+REVEAL_PLUGINS: (notes)
-#+REVEAL_ADD_PLUGIN: math RevealMath.KaTeX https://cdn.jsdelivr.net/npm/reveal.js@6/dist/plugin/math.js
-#+REVEAL_INIT_SCRIPT: katex: { trust: true, strict: false,
-#+REVEAL_INIT_SCRIPT:   macros: { '\\id': '\\htmlData{id=#1}{#2}', '\\idc': '\\htmlData{id=#1, cor=#2}{#3}',
-#+REVEAL_INIT_SCRIPT:             '\\termo': '\\htmlData{termo=#1}{#2}' } },
-#+REVEAL_INIT_SCRIPT: autoAnimateDuration: 1.2
-
-# As mesmas macros em LaTeX, para o preview de fórmulas no Org (e o export
-# LaTeX): \id e \termo mostram só o conteúdo; \idc colore quando a cor
-# existe no xcolor (as do custom.css estão definidas abaixo).
+# Cores do tema para \idc{id}{COR}{...} no preview LaTeX do Org (módulo
+# anima); no HTML elas estão em custom.css.
 #+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \providecommand{\id}[2]{#2}
-#+LATEX_HEADER: \providecommand{\termo}[2]{#2}
-#+LATEX_HEADER: \makeatletter\providecommand{\idc}[3]{\@ifundefinedcolor{#2}{#3}{\textcolor{#2}{#3}}}\makeatother
-#+LATEX_HEADER: \definecolor{azul}{HTML}{58C4DD}\definecolor{amarelo}{HTML}{FFFF00}\definecolor{vermelho}{HTML}{FC6255}\definecolor{verde}{HTML}{83C167}
 #+LATEX_HEADER: \definecolor{azul-quanta}{HTML}{242F62}\definecolor{laranja-quanta}{HTML}{E53B11}
 
 # Cores de destaque (definidas em custom.css)
