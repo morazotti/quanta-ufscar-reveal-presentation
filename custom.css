@@ -151,7 +151,9 @@
    O reveal.js copia as classes do <section> para o fundo do slide
    (.slide-background), onde a forma azul é desenhada: ela acompanha a
    transição de fundo e aparece também na visão geral (ESC) e no PDF.
-   Logo, número do slide e controles mudam pelo slide presente (:has). */
+   A metade azul entra e sai pela direita e o triângulo, por baixo (regra
+   mais adiante). Logo, número do slide e controles mudam pelo slide
+   presente (:has). */
 .reveal .slide-background.quanta-triangulo::after,
 .reveal .slide-background.quanta-metade::after {
   content: "";
@@ -170,6 +172,34 @@
 /* Metade direita azul */
 .reveal .slide-background.quanta-metade::after {
   left: 50%;
+}
+
+/* Entrada e saída da forma azul: o fundo de um slide quanta-* que não é o
+   presente fica deslocado para fora da tela, e a transição de fundo do
+   reveal.js o move (todo o fundo, não só a forma: 50% da largura leva a
+   metade azul exatamente até a borda; 30% da altura, o triângulo). Sem o
+   opacity: 1 o reveal.js faria fade em vez de deslizar.
+   Entre dois slides com a mesma forma o quanta.js iguala o
+   data-background-hash e o reveal.js suspende a transição: a forma fica
+   parada, como nos passos de :passos:.
+   O fundo de um slide vertical é filho de um .stack (o do heading de nível
+   acima); ao trocar de pilha, é o .stack que sai, mas o filho presente
+   continua .present, daí o :has. Na visão geral, no modo de rolagem e na
+   impressão, os fundos ficam onde estão. */
+html:not(.print-pdf, .reveal-print) .reveal-viewport:not(.reveal-scroll) .reveal:not(.overview) .backgrounds :is(
+  .slide-background.quanta-metade:not(.present),
+  .slide-background.stack:not(.present):has(> .slide-background.quanta-metade.present)
+) {
+  opacity: 1;
+  transform: translateX(50%);
+}
+
+html:not(.print-pdf, .reveal-print) .reveal-viewport:not(.reveal-scroll) .reveal:not(.overview) .backgrounds :is(
+  .slide-background.quanta-triangulo:not(.present),
+  .slide-background.stack:not(.present):has(> .slide-background.quanta-triangulo.present)
+) {
+  opacity: 1;
+  transform: translateY(30%);
 }
 
 /* Número do slide e controles ficam sobre o azul no canto inferior direito */

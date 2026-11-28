@@ -53,6 +53,12 @@ Dois estilos do template PPTX, escolhidos por slide com uma classe no
 A logo reduzida fica branca sobre o azul (=quanta-metade=); número do slide e
 controles ficam brancos nos dois estilos.
 
+A forma azul entra e sai com o slide: a metade azul pela direita, o
+triângulo por baixo. Entre dois slides com a mesma forma (por exemplo, os
+passos de =:passos:=) ela fica parada. Se um slide metade for animado com um
+slide comum (=data-auto-animate=, mesmo =data-auto-animate-id=), o título
+desliza do centro da coluna esquerda ao centro do slide, sem esticar.
+
 #+begin_src org
 ,* Resultados
 :PROPERTIES:
