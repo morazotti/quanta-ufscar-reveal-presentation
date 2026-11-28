@@ -187,8 +187,8 @@
    54% da largura, como no PPTX.
    Texto também à esquerda: bloco #+begin_esquerda (vira div.esquerda), que
    fica abaixo do título. Nesse caso o lado direito deve ser um único
-   elemento (#+begin_direita, ou uma só lista/parágrafo), que ocupa a altura
-   das duas linhas da coluna esquerda.
+   elemento (#+begin_direita, ou uma só lista/parágrafo), que começa na
+   mesma altura do bloco da esquerda, logo abaixo do título.
    O reveal.js põe display inline nos slides (block carregado, none
    descarregado); o !important só vale para os carregados. */
 .reveal .slides section.quanta-metade:not([style*="display: none"]) {
@@ -223,6 +223,7 @@
 
 .reveal .slides section.quanta-metade:has(> .esquerda) {
   grid-template-rows: auto auto;
+  align-content: center;
   row-gap: 0.5em;
 }
 
@@ -239,7 +240,8 @@
 }
 
 .reveal .slides section.quanta-metade:has(> .esquerda) > :not(h1, h2, h3, h4, h5, h6, .esquerda) {
-  grid-row: 1 / -1;
+  grid-row: 2;
+  align-self: start;
 }
 
 .reveal .slides section.quanta-metade table th {
